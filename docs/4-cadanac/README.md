@@ -5,40 +5,231 @@
 
 Cadanac is a SAAS Virus Case Management System including Financial and Location Tracking Capabilities.  It is developed in response to Covid19 and can accomodate dual and multiple infections (for example the Flu and Covid19 on the same host).
 
-## Cadanac Business Archicture Capabilities
 
-### Virus Case Management ability for Hospitals and Health Care Providers  
+## Cadanac Business Archicture
 
-- Creating and Updating infected Hosts records  
 
-### Host Location Management ability for Location Providers (such as Cell Phone Companies)  
+### Cadanac Actors
 
-- Creating and Updating geographical positions of infected Hosts  
+- Hospitals
+- Other Treatment Centres
+- Cell Phone Companies
+- NGOs
+- Goverments
+- WHO
 
-### Financial Allocation Management ability for Health Care Providers, NGOs and Governments  
+### Use Cases
 
-#### Assigning Finances to different Health Care Providers for specific purposes  
+Below are shown Back End Hyperledger Fabric chaincode invocation commands.
 
-- specific virues  
+TODO: create a Front End Mobile App and REST JSON API for the Back End.
 
-- specific remediation plans  
+#### Hospitals & Other Treatment Centres
 
-#### Health Care Providers track Expenditures accordingly  
+- create a Covid19 Symptomatic HostHealth record for a new Patient
 
-### Overall System Monitoring, Governance and Intelligence/Trend Gathering by Governments  
 
-#### Increases/Decreases in Host infections  
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["createPersonHealth", "123-456-7890", "Isolation","Symptomatic","Covid19"]}'
+```
 
-- per specific virus  
+- update a Covid19 HostHealth record for a Patient as Positive
 
-- per remediation plan  
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Isolation","Positive","Covid19"]}'
+```
 
-#### Location Proximity of Host infections  
+- create an Influenze Symptomatic HostHealth record for the same Patient
 
-#### Remediation plans analysis  
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["createPersonHealth", "123-456-7890", "Isolation","Symptomatic","Influenza"]}'
+```
 
-- Efficacy vs Cost  
+- update an Influenze HostHealth record for the same Patient as Positive
 
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Hospitalization","Positive","Influenza"]}'
+```
+
+- update a Covid19 HostHealth record for an existing Patient with Vaccination remediation treatment
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Vaccination","Positive","Covid19"]}'
+```
+
+- update a Covid19 HostHealth record for an existing Patient as Recovering
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Isolation","Recovering","Covid19"]}'
+```
+
+- update a Covid19 HostHealth record for an existing Patient as Relapse
+
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Hospitalization","Relapse","Covid19"]}'
+```
+
+- update an Influenze HostHealth record for the same Patient as SymptomFree
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "","SymptomFree","Influenza"]}'
+```
+
+- retrieve all HostHealth records for a Patient with specific Virus
+
+```sh
+peer chaincode invoke -C channelpersonhealth  -n personhealth -c '{"Args":["getHistoryForPersonHealth","123-456-7890","Covid19"]}'
+```
+
+- retrieve latest HostHealth record for a Patient with specific Virus
+
+```sh
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
+```
+
+- consume money from a Covid19 HealthFinance record for a specific account
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "10000","Covid19"]}'
+```
+
+- consume money from a specific Remediation for Covid19 HealthFinance record for a specific account 
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "Hospitalization", "500",""]}'
+```
+
+- consume money from an Influenza HealthFinance record for a specific account
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "2000","Influenza"]}'
+```
+
+- consume money from a HealthFinance record for a specific account for any Remediation any Virus
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "5000",""]}'
+```
+
+- retrieve all HealthFinance records for a specific account
+
+```sh
+peer chaincode invoke -C channelhealthfinance  -n healthfinance -c '{"Args":["getHistoryForHealthFinance","Sunnybrook-Emerg"]}'
+```
+
+- retrieve latest balance for a HealthFinance record for a specific account
+
+```sh
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
+```
+
+#### Goverments
+
+- create a new HostLocation request for a new Patient
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["createPersonLocation", "123-456-7890"]}'
+```
+
+- retrieve all HostLocation records for a Patient
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getHistoryForPersonLocation", "123-456-7890"]}'
+```
+
+- retrieve latest HostLocation record for a Patient
+
+```sh
+peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "123-456-7890"]}'
+```
+
+- retrieve all HostHealth records for a Patient with specific Virus
+
+see above
+
+- retrieve latest HostHealth record for a Patient with specific Virus
+
+see above
+
+
+#### Cell Phone Companies
+
+- get all new HostLocation requests (for all new Patients)
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getNew"]}'
+```
+
+- update HostLocation request with present Latitude & Longitude for a new Patient (and remove new request)
+
+First Patient is in Toronto.
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "123-456-7890", "43.6532° N", "79.3832° W"]}'
+```
+
+- update HostLocation with present Latitude & Longitude for an existing Patient
+
+Another Patient is also in Toronto.
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "789-456-1230", "43.6532° N", "79.3832° W"]}'
+```
+
+First Patient is now in Mississauga.
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "123-456-7890", "43.5890° N", "79.6441° W"]}'
+```
+
+#### Governments & NGOs
+
+- add money into a Covid19 HealthFinance record for a specific account
+
+Accounts may be per Hospital, per Other Treatment Centre, per Hospital Department, of any granularity be it large or small.
+
+Governments & NGOs may wish to prioritize funds for specific Viruses or Remediation methodologies.
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "50000","Covid19"]}'
+```
+
+- add money into a specific Remediation for Covid19 HealthFinance record for a specific account 
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "Vaccination", "50000","Covid19"]}'
+```
+
+- add money into an Influenze HealthFinance record for a specific account
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "80000","Influenza"]}'
+```
+
+- add money into a HealthFinance record for a specific account for any Remediation any Virus
+
+```sh
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "60000",""]}'
+```
+
+- retrieve all HealthFinance records for a specific account
+
+see above
+
+- retrieve latest HealthFinance record for a specific account
+
+see above
+
+
+##### TODO
+
+Employ Machine Learning to:
+- correlate increases/decreases in HostHealth records with HostLocation records
+- predict geographical locations where viruses are likliest to spread to
+- assertain relapse frequencies
+- match spending to effective/ineffective Remediation
+- ...
 
 ## Cadanac Data Archicture
 
@@ -60,7 +251,7 @@ currently Host = Person
 - PrimaryKey per Host
 - VirusType (Covid19, ...)
 - Remediation (Isolation, Hospitalization, ...)
-- HealthStatus (Healthy, Symptomatic, Positive, Vaccinated, Recovering, Relapse, PiningForTheFjords)
+- HealthStatus (SymptomFree, Symptomatic, Positive, Vaccinated, Recovering, Relapse, PiningForTheFjords)
 
 #### HealthFinance
 
@@ -99,7 +290,7 @@ The Cadanac System fosters participation between different Organizations per the
 
 #### Inter Organization Collaboration
 
-Cadanac permits the following Collaboration Groups
+Cadanac permits the following Collaboration Groups.  Each group is assigned to a different Channel.
 
 - Regulators + HostLocation Providers
 - Regulators + HostHealth Providers
