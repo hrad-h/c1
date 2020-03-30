@@ -7,37 +7,37 @@ Cadanac is a SAAS Virus Case Management System including Financial and Location 
 
 ## Cadanac Business Archicture Capabilities
 
-Virus Case Management ability for Hospitals and Health Care Providers  
+### Virus Case Management ability for Hospitals and Health Care Providers  
 
--- Creating and Updating infected Hosts records  
+- Creating and Updating infected Hosts records  
 
-Host Location Management ability for Location Providers (such as Cell Phone Companies)  
+### Host Location Management ability for Location Providers (such as Cell Phone Companies)  
 
--- Creating and Updating geographical positions of infected Hosts  
+- Creating and Updating geographical positions of infected Hosts  
 
-Financial Allocation Management ability for Health Care Providers, NGOs and Governments  
+### Financial Allocation Management ability for Health Care Providers, NGOs and Governments  
 
--- Assigning Finances to different Health Care Providers for specific purposes  
+#### Assigning Finances to different Health Care Providers for specific purposes  
 
---- specific virues  
+- specific virues  
 
---- specific remediation plans  
+- specific remediation plans  
 
--- Health Care Providers track Expenditures accordingly  
+#### Health Care Providers track Expenditures accordingly  
 
-Overall System Monitoring, Governance and Intelligence/Trend Gathering by Governments  
+### Overall System Monitoring, Governance and Intelligence/Trend Gathering by Governments  
 
--- Increases/Decreases in Host infections  
+#### Increases/Decreases in Host infections  
 
---- per specific virus  
+- per specific virus  
 
---- per remediation plan  
+- per remediation plan  
 
--- Location Proximity of Host infections  
+#### Location Proximity of Host infections  
 
--- Remediation plans analysis  
+#### Remediation plans analysis  
 
---- Efficacy vs Cost  
+- Efficacy vs Cost  
 
 
 ## Cadanac Data Archicture
