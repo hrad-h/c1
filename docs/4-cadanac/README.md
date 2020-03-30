@@ -51,7 +51,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
 
-![2.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/2.png)
+![2.png](images/2.png)
 
 
 - create an Influenze Symptomatic HostHealth record for the same Patient
@@ -62,7 +62,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Influenza"]}'
 ```
 
-![3.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/3.png)
+![3.png](images/3.png)
 
 - update an Influenze HostHealth record for the same Patient as Positive
 
@@ -72,7 +72,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Influenza"]}'
 ```
 
-![4.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/4.png)
+![4.png](images/4.png)
 
 - update a Covid19 HostHealth record for an existing Patient with Vaccination remediation treatment
 
@@ -82,7 +82,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
 
-![5.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/5.png)
+![5.png](images/5.png)
 
 - update a Covid19 HostHealth record for an existing Patient as Recovering
 
@@ -92,7 +92,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
 
-![6.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/6.png)
+![6.png](images/6.png)
 
 - update a Covid19 HostHealth record for an existing Patient as Relapse
 
@@ -102,7 +102,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
 
-![7.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/7.png)
+![7.png](images/7.png)
 
 - update an Influenze HostHealth record for the same Patient as SymptomFree
 
@@ -116,7 +116,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode invoke -C channelpersonhealth  -n personhealth -c '{"Args":["getHistoryForPersonHealth","123-456-7890","Covid19"]}'
 ```
 
-![8.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/8.png)
+![8.png](images/8.png)
 
 - retrieve latest HostHealth record for a Patient with specific Virus
 
@@ -124,7 +124,7 @@ peer chaincode invoke -C channelpersonhealth  -n personhealth -c '{"Args":["getH
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
 
-![9.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/9.png)
+![9.png](images/9.png)
 
 - consume money from a Covid19 HealthFinance record for a specific account
 
@@ -134,8 +134,6 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![9.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/9.png)
-
 - consume money from a specific Remediation for Covid19 HealthFinance record for a specific account 
 
 ```sh
@@ -144,7 +142,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![19.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/19.png)
+![19.png](images/19.png)
 
 - consume money from an Influenza HealthFinance record for a specific account
 
@@ -154,7 +152,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![20.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/20.png)
+![20.png](images/20.png)
 
 - consume money from a HealthFinance record for a specific account for any Remediation any Virus
 
@@ -168,7 +166,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode invoke -C channelhealthfinance  -n healthfinance -c '{"Args":["getHistoryForHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![21.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/21.png)
+![21.png](images/21.png)
 
 - retrieve latest balance for a HealthFinance record for a specific account
 
@@ -176,7 +174,7 @@ peer chaincode invoke -C channelhealthfinance  -n healthfinance -c '{"Args":["ge
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![22.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/22.png)
+![22.png](images/22.png)
 
 
 #### Goverments
@@ -189,7 +187,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n pe
 peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "123-456-7890"]}'
 ```
 
-![10.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/10.png)
+![10.png](images/10.png)
 
 - retrieve all HostLocation records for a Patient
 
@@ -197,7 +195,7 @@ peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n per
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getHistoryForPersonLocation", "123-456-7890"]}'
 ```
 
-![14.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/14.png)
+![14.png](images/14.png)
 
 - retrieve latest HostLocation record for a Patient
 
@@ -205,7 +203,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n pe
 peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "123-456-7890"]}'
 ```
 
-![15.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/15.png)
+![15.png](images/15.png)
 
 - retrieve all HostHealth records for a Patient with specific Virus
 
@@ -224,7 +222,7 @@ see above
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getNew"]}'
 ```
 
-![11.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/11.png)
+![11.png](images/11.png)
 
 - update HostLocation request with present Latitude & Longitude for a new Patient (and remove new request)
 
@@ -240,7 +238,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n pe
 
 "123-456-7890" is no longer in the getNew list.
 
-![12.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/12.png)
+![12.png](images/12.png)
 
 - update HostLocation with present Latitude & Longitude for an existing Patient
 
@@ -258,7 +256,7 @@ peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n per
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getNew"]}'
 ```
 
-![13.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/13.png)
+![13.png](images/13.png)
 
 First Patient is now in Mississauga.
 
@@ -280,7 +278,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![16.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/16.png)
+![16.png](images/16.png)
 
 - add money into a specific Remediation for Covid19 HealthFinance record for a specific account 
 
@@ -290,7 +288,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![17.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/17.png)
+![17.png](images/17.png)
 
 - add money into an Influenze HealthFinance record for a specific account
 
@@ -300,7 +298,7 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
-![18.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/18.png)
+![18.png](images/18.png)
 
 - add money into a HealthFinance record for a specific account for any Remediation any Virus
 
@@ -417,20 +415,20 @@ Here are some ArchiMate Diagrams.
 
 ### Location Provider
 
-![Cadanac_LocationProvider.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/Cadanac_LocationProvider.png)
+![Cadanac_LocationProvider.png](images/Cadanac_LocationProvider.png)
 
 ### Regulator
 
-![Cadanac_Regulator.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/Cadanac_Regulator.png)
+![Cadanac_Regulator.png](images/Cadanac_Regulator.png)
 
 ### Cadanac End-To-End
 
-![Cadanac_Technology_Architecture.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/Cadanac_Technology_Architecture.png)
+![Cadanac_Technology_Architecture.png](images/Cadanac_Technology_Architecture.png)
 
 Please see
-- https://github.com/hrad-h/c1/blob/master/docs/gcp/README_GCP.md
-- https://github.com/hrad-h/c1/blob/master/docs/k8s/README_K8S.md
-- https://github.com/hrad-h/c1/blob/master/docs/hlf/README_HLF.md
+- [Google Cloud](../gcp/README.md)
+- [Kubernetes](../k8s/README.md)
+- [Hyperledger Fabric](../hlf/README.md)
 
 ## Summary
 

@@ -24,7 +24,7 @@ gcloud compute --project=rich-tome-267821 networks create vpc-cadanac-1 --subnet
 ```
 or using the GCP web control panel
 
-![gcp_vpc.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_vpc.png)
+![gcp_vpc.png](images/gcp_vpc.png)
 
 
 ### Step 2: Next create Firewall Rules so that the Cadanac VPC may be accessible from the public internet to reach Cadanac Kubernetes Services
@@ -36,20 +36,20 @@ gcloud compute --project=rich-tome-267821 firewall-rules create fw-cadanac-1 --d
 ```
 or using the GCP web control panel
 
-![gcp_fw.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_fw.png)
+![gcp_fw.png](images/gcp_fw.png)
 
-![gcp_fw2.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_fw2.png)
+![gcp_fw2.png](images/gcp_fw2.png)
 
 
 ### Step 3: For Cadanac Development and Administration create SSH Keys to connect from your local device to the Cadanac VPC
 
 Run these commands from a Unix shell, or from a similar UI tool.
 
-![gcp_sshkey.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_sshkey.png)
+![gcp_sshkey.png](images/gcp_sshkey.png)
 
 copy/paste the ssh-rsa public key into GCE Metadata
 
-![gcp_sshmetadata.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_sshmetadata.png)
+![gcp_sshmetadata.png](images/gcp_sshmetadata.png)
 
 ### Step 4: Finally create the GCE PAAS virtual servers upon which the Cadanac system runs
 
@@ -59,9 +59,9 @@ gcloud beta compute --project=rich-tome-267821 instances create instance-cadanac
 
 or using the GCP web control panel
 
-![gcp_gce.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_gce.png)
-![gcp_gce2.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_gce2.png)
-![gcp_gce3.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_gce3.png)
+![gcp_gce.png](images/gcp_gce.png)
+![gcp_gce2.png](images/gcp_gce2.png)
+![gcp_gce3.png](images/gcp_gce3.png)
 
 
 ### Step 5: For Scalability and Fault Tolerance add more GCE PAAS virtual servers - create more as Cadanac demand increases
@@ -86,7 +86,7 @@ Here are some helpful links.
 https://devopscube.com/nfs-servers-google-cloud-filestore/
 https://console.cloud.google.com/filestore
 
-![gcp_nfs.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_nfs.png)
+![gcp_nfs.png](images/gcp_nfs.png)
 
 
 
@@ -94,7 +94,7 @@ https://console.cloud.google.com/filestore
 
 Use the GCP web control panel to find the NFS Server IP address to use in the commands below.
 
-![gcp_nfsmount.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/gcp_nfsmount.png)
+![gcp_nfsmount.png](images/gcp_nfsmount.png)
 
 Then repeat for each GCE servers.
 

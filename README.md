@@ -72,19 +72,19 @@ Mitigation involves applying rigorous system stress tests.
 
 All Workflows and Use Cases are here
 
-[Cadanac Business, Data, Application Architecture - Hyperledger Fabric PAAS](https://github.com/hrad-h/c1/blob/master/docs/4-cadanac/README.md)
+[Cadanac Business, Data, Application Architecture - Hyperledger Fabric PAAS](docs/4-cadanac/README.md)
 
 Google Cloud IAAS Definition
 
-[Cadanac Technolgogy Architecture - GCP IAAS](https://github.com/hrad-h/c1/blob/master/docs/1-gcp/README.md)
+[Cadanac Technolgogy Architecture - GCP IAAS](docs/1-gcp/README.md)
 
 Kubernetes IAAS Definition
 
-[Cadanac Technolgogy Architecture - Kubernetes IAAS](https://github.com/hrad-h/c1/blob/master/docs/2-k8s/README.md)
+[Cadanac Technolgogy Architecture - Kubernetes IAAS](docs/2-k8s/README.md)
 
 Hyperledger Fabric Definition
 
-[Cadanac Platform Architecture - Hyperledger Fabric PAAS](https://github.com/hrad-h/c1/blob/master/docs/3-hlf/README.md)
+[Cadanac Platform Architecture - Hyperledger Fabric PAAS](docs/3-hlf/README.md)
 
 
 ## Cadanac DevOps
