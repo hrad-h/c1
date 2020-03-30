@@ -26,49 +26,83 @@ TODO: create a Front End Mobile App and REST JSON API for the Back End.
 
 #### Hospitals & Other Treatment Centres
 
-- create a Covid19 Symptomatic HostHealth record for a new Patient
+To run the following Back End Use Cases, first connect to the Kubernetes CLI pod.  Change the pod id to your own.
 
+```sh
+kubectl exec -it cli-gov1-5bfc9fbd64-rn24c bash
+```
+
+- create a Covid19 Symptomatic HostHealth record for a new Patient
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["createPersonHealth", "123-456-7890", "Isolation","Symptomatic","Covid19"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
+
+![1.png](images/1.png)
+
 
 - update a Covid19 HostHealth record for a Patient as Positive
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Isolation","Positive","Covid19"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
+
+![2.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/2.png)
+
 
 - create an Influenze Symptomatic HostHealth record for the same Patient
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["createPersonHealth", "123-456-7890", "Isolation","Symptomatic","Influenza"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Influenza"]}'
 ```
+
+![3.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/3.png)
 
 - update an Influenze HostHealth record for the same Patient as Positive
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Hospitalization","Positive","Influenza"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Influenza"]}'
 ```
+
+![4.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/4.png)
 
 - update a Covid19 HostHealth record for an existing Patient with Vaccination remediation treatment
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Vaccination","Positive","Covid19"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
+
+![5.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/5.png)
 
 - update a Covid19 HostHealth record for an existing Patient as Recovering
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Isolation","Recovering","Covid19"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
+
+![6.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/6.png)
 
 - update a Covid19 HostHealth record for an existing Patient as Relapse
 
-
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n personhealth -c '{"Args":["updateRemediationIDPersonStatus", "123-456-7890", "Hospitalization","Relapse","Covid19"]}'
+
+peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
+
+![7.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/7.png)
 
 - update an Influenze HostHealth record for the same Patient as SymptomFree
 
@@ -82,29 +116,45 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonhealth -n pers
 peer chaincode invoke -C channelpersonhealth  -n personhealth -c '{"Args":["getHistoryForPersonHealth","123-456-7890","Covid19"]}'
 ```
 
+![8.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/8.png)
+
 - retrieve latest HostHealth record for a Patient with specific Virus
 
 ```sh
 peer chaincode query -C channelpersonhealth  -n personhealth -c '{"Args":["readPersonHealth","123-456-7890","Covid19"]}'
 ```
 
+![9.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/9.png)
+
 - consume money from a Covid19 HealthFinance record for a specific account
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "10000","Covid19"]}'
+
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![9.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/9.png)
 
 - consume money from a specific Remediation for Covid19 HealthFinance record for a specific account 
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "Hospitalization", "500",""]}'
+
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![19.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/19.png)
 
 - consume money from an Influenza HealthFinance record for a specific account
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "2000","Influenza"]}'
+
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![20.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/20.png)
 
 - consume money from a HealthFinance record for a specific account for any Remediation any Virus
 
@@ -118,11 +168,16 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n hea
 peer chaincode invoke -C channelhealthfinance  -n healthfinance -c '{"Args":["getHistoryForHealthFinance","Sunnybrook-Emerg"]}'
 ```
 
+![21.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/21.png)
+
 - retrieve latest balance for a HealthFinance record for a specific account
 
 ```sh
 peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![22.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/22.png)
+
 
 #### Goverments
 
@@ -130,7 +185,11 @@ peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["rea
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["createPersonLocation", "123-456-7890"]}'
+
+peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "123-456-7890"]}'
 ```
+
+![10.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/10.png)
 
 - retrieve all HostLocation records for a Patient
 
@@ -138,11 +197,15 @@ peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n pe
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getHistoryForPersonLocation", "123-456-7890"]}'
 ```
 
+![14.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/14.png)
+
 - retrieve latest HostLocation record for a Patient
 
 ```sh
 peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "123-456-7890"]}'
 ```
+
+![15.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/15.png)
 
 - retrieve all HostHealth records for a Patient with specific Virus
 
@@ -161,26 +224,46 @@ see above
 peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getNew"]}'
 ```
 
+![11.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/11.png)
+
 - update HostLocation request with present Latitude & Longitude for a new Patient (and remove new request)
 
 First Patient is in Toronto.
 
 ```sh
-peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "123-456-7890", "43.6532° N", "79.3832° W"]}'
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "123-456-7890", "43.6532", "79.3832"]}'
+
+peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "123-456-7890"]}'
+
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getNew"]}'
 ```
+
+"123-456-7890" is no longer in the getNew list.
+
+![12.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/12.png)
 
 - update HostLocation with present Latitude & Longitude for an existing Patient
 
 Another Patient is also in Toronto.
 
 ```sh
-peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "789-456-1230", "43.6532° N", "79.3832° W"]}'
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["createPersonLocation", "789-456-1230"]}'
+
+peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "789-456-1230"]}'
+
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "789-456-1230", "43.6532", "79.3832"]}'
+
+peer chaincode query -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["readPersonLocation", "789-456-1230"]}'
+
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["getNew"]}'
 ```
+
+![13.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/13.png)
 
 First Patient is now in Mississauga.
 
 ```sh
-peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "123-456-7890", "43.5890° N", "79.6441° W"]}'
+peer chaincode invoke -o blockchain-orderer:31010 -C channelpersonlocation -n personlocation -c '{"Args":["updateLatitudeLongitude", "123-456-7890", "43.5890, "79.6441"]}'
 ```
 
 #### Governments & NGOs
@@ -192,20 +275,32 @@ Accounts may be per Hospital, per Other Treatment Centre, per Hospital Departmen
 Governments & NGOs may wish to prioritize funds for specific Viruses or Remediation methodologies.
 
 ```sh
-peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "50000","Covid19"]}'
+peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["createHealthFinance", "Sunnybrook-Emerg", " ", "50000","Covid19"]}'
+
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![16.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/16.png)
 
 - add money into a specific Remediation for Covid19 HealthFinance record for a specific account 
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "Vaccination", "50000","Covid19"]}'
+
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![17.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/17.png)
 
 - add money into an Influenze HealthFinance record for a specific account
 
 ```sh
 peer chaincode invoke -o blockchain-orderer:31010 -C channelhealthfinance -n healthfinance -c '{"Args":["updateRemediationIDBalanceRemaining", "Sunnybrook-Emerg", "", "80000","Influenza"]}'
+
+peer chaincode query -C channelhealthfinance  -n healthfinance -c '{"Args":["readHealthFinance","Sunnybrook-Emerg"]}'
 ```
+
+![18.png](https://github.com/hrad-h/c1/blob/master/docs/cadanac/images/18.png)
 
 - add money into a HealthFinance record for a specific account for any Remediation any Virus
 
