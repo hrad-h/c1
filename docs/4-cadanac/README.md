@@ -127,6 +127,20 @@ Kubernetes Jobs configure and initialize all Cadanac Application Architecture co
 
 ## Cadanac Technology Archicture
 
+Here are some ArchiMate Diagrams.
+
+### Location Provider
+
+![Cadanac_LocationProvider.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/Cadanac_LocationProvider.png)
+
+### Regulator
+
+![Cadanac_Regulator.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/Cadanac_Regulator.png)
+
+### Cadanac End-To-End
+
+![Cadanac_Technology_Architecture.png](https://github.com/hrad-h/c1/blob/master/docs/gcp/images/Cadanac_Technology_Architecture.png)
+
 Please see
 - https://github.com/hrad-h/c1/blob/master/docs/gcp/README_GCP.md
 - https://github.com/hrad-h/c1/blob/master/docs/k8s/README_K8S.md
