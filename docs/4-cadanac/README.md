@@ -426,9 +426,9 @@ Here are some ArchiMate Diagrams.
 ![Cadanac_Technology_Architecture.png](images/Cadanac_Technology_Architecture.png)
 
 Please see
-- [Google Cloud](../gcp/README.md)
-- [Kubernetes](../k8s/README.md)
-- [Hyperledger Fabric](../hlf/README.md)
+- [Google Cloud](../1-gcp/README.md)
+- [Kubernetes](../2-k8s/README.md)
+- [Hyperledger Fabric](../3-hlf/README.md)
 
 ## Summary
 
